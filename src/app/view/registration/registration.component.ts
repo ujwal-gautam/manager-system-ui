@@ -23,15 +23,12 @@ export class RegistrationComponent implements OnInit {
               private router: Router) {
     this.registrationForm = this.formBuilder.group({
       id: [],
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$'),
-      ]),
+      email: ['', Validators.required],
       password: ['', Validators.required],
       userRole: ['Manager'],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+      mobile: ['', Validators.required],
       address: ['', Validators.required],
       status: ['Active']
     });
