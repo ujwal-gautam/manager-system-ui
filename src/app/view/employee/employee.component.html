@@ -1,0 +1,70 @@
+<div id="ui-view">
+  <div>
+    <div class="animated fadeIn">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+
+            <div class="card-header">
+              <div class="float-left">Employees</div>
+              <div class="card-header-actions">
+                <button class="btn btn-primary btn-sm float-right" (click)="addEmployee()"> Add
+                  Employee
+                </button>
+              </div>
+            </div>
+
+            <!--            <div *ngIf="isSubmitted">-->
+            <!--              <div class="alert alert-success" *ngIf="isSuccess">-->
+            <!--                <strong> {{_statusMsg}} Please Wait ..</strong>.-->
+            <!--              </div>-->
+
+            <!--              <div class="alert alert-danger" *ngIf="!isSuccess ">-->
+            <!--                <strong>{{_statusMsg}}</strong>-->
+            <!--              </div>-->
+            <!--            </div>-->
+
+            <div class="card-body">
+
+              <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                <thead class="thead-light">
+                <tr>
+                  <th style="width: 20px;">ID</th>
+                  <th class="text-left">First Name</th>
+                  <th class="text-left">Last Name</th>
+                  <th class="text-left">Mobile</th>
+                  <th class="text-left">Address</th>
+                  <th class="text-left">Status</th>
+                  <th style="width: 150px;">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let employee of employeeList">
+                  <td scope="row">{{employee.id}}</td>
+                  <td class="text-left">{{employee.firstName}}</td>
+                  <td class="text-left">{{employee.lastName}}</td>
+                  <td class="text-left">{{employee.mobile}}</td>
+                  <td class="text-left">{{employee.address}}</td>
+                  <td class="text-left">{{employee.status}}</td>
+                  <td>
+
+                    <button type="button" class="btn btn-success btn-sm mr-3" title="Edit"
+                            [routerLink]="['/employee/employee-edit/', employee.id]">Edit
+                    </button>
+
+                    <button type="button" class="btn btn-danger btn-sm move-right" title="Delete"
+                            (click)="delete(employee.id)">Delete
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<app-confirmation-madal (hideModal)="modalConfirmation($event)" #confirmModal></app-confirmation-madal>-->
