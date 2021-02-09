@@ -62,6 +62,14 @@ export class EmployeeService {
       .pipe(
         retry(1),
         catchError(this.errorHandle)
-      )
+      );
+  }
+
+  updateEmployee(data: any, id: any): Observable<any> {
+    return this.http.put<any>(this.baseUrl + '/' + id + '/update', JSON.stringify(data), this.httpOptions)
+        .pipe(
+            retry(1),
+            catchError(this.errorHandle)
+        );
   }
 }

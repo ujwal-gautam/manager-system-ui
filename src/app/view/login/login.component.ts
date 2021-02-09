@@ -6,7 +6,7 @@ import {first} from 'rxjs/operators';
 import {ErrorModalComponent} from '../global/error-modal/error-modal.component';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-dashboard',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

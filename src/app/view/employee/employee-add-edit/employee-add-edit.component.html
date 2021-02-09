@@ -1,0 +1,98 @@
+<div class="row">
+
+  <!-- Form -->
+  <div class="col-md-6 mx-auto">
+    <div class="text-center mt-4"><h5>Employee Add Form</h5>
+      <hr>
+    </div>
+
+    <div class="card">
+
+      <!--      <div class="card-header"><strong><span *ngIf="mode=='add'"> Add New </span> <span-->
+      <!--        *ngIf="mode=='edit'">Update </span> Quantity Loss Chart </strong></div>-->
+
+      <div class="card-body">
+
+        <form [formGroup]="employeeForm" (ngSubmit)="submitEmployeeForm()" novalidate>
+
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>First name</label>
+                <input type="text" formControlName="firstName" class="form-control"
+                       [ngClass]="{'is-invalid': employeeForm.get('firstName').touched && employeeForm.get('firstName').invalid}">
+                <div class="invalid-feedback">
+                  <div>First name is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Last name</label>
+                <input type="text" formControlName="lastName" class="form-control"
+                       [ngClass]="{'is-invalid': employeeForm.get('lastName').touched && employeeForm.get('lastName').invalid}">
+                <div class="invalid-feedback">
+                  <div>Last name is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Email ID</label>
+                <input type="text" formControlName="emailId" class="form-control"
+                       [ngClass]="{'is-invalid': employeeForm.get('emailId').touched && employeeForm.get('emailId').invalid}">
+                <div class="invalid-feedback">
+                  <div>Email Id is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Mobile</label>
+                <input type="number" formControlName="mobile" class="form-control"
+                       [ngClass]="{'is-invalid': employeeForm.get('mobile').touched && employeeForm.get('mobile').invalid}">
+                <div class="invalid-feedback">
+                  <div>Mobile is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" formControlName="address" class="form-control"
+                       [ngClass]="{'is-invalid': employeeForm.get('address').touched && employeeForm.get('address').invalid}">
+                <div class="invalid-feedback">
+                  <div>Address is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer text-center">
+            <button type="submit" class="btn btn-primary mr-3">Submit</button>
+            <a class="btn btn-danger" [routerLink]="['/employee']">Cancel</a>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-success-modal (hideModal)="modalSuccess($event)" #successModal></app-success-modal>
+<app-success-modal #errorModal></app-success-modal>

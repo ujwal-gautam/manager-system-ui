@@ -1,4 +1,4 @@
-<div id="ui-view">
+<div id="ui-view" style="background-color: black">
   <div>
     <div class="animated fadeIn">
       <div class="row">
@@ -35,10 +35,10 @@
                   <th class="text-left">Mobile</th>
                   <th class="text-left">Address</th>
                   <th class="text-left">Status</th>
-                  <th style="width: 150px;">Action</th>
+                  <th style="width: 100px;">Action</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody *ngIf="employeeList">
                 <tr *ngFor="let employee of employeeList">
                   <td scope="row">{{employee.id}}</td>
                   <td class="text-left">{{employee.firstName}}</td>
@@ -48,14 +48,17 @@
                   <td class="text-left">{{employee.status}}</td>
                   <td>
 
-                    <button type="button" class="btn btn-success btn-sm mr-3" title="Edit"
-                            [routerLink]="['/employee/employee-edit/', employee.id]">Edit
+                    <button type="button" class="btn btn-success btn-sm move-right mr-3" title="Edit"
+                            [routerLink]="['/employee/employee-edit/', employee.id]"><i class="fa fa-pencil-square-o"></i>
                     </button>
 
                     <button type="button" class="btn btn-danger btn-sm move-right" title="Delete"
-                            (click)="delete(employee.id)">Delete
+                            (click)="delete(employee.id)"><i class="fa fa-trash-o"></i>
                     </button>
                   </td>
+                </tr>
+                <tr *ngIf="employeeList == 0">
+                  <td colspan="7" class="text-center">Records Not Found!</td>
                 </tr>
                 </tbody>
               </table>

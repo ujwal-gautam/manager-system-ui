@@ -11,12 +11,16 @@ import {JwtInterceptor} from './view/service/jwt.interceptor';
 import {CommonModule} from '@angular/common';
 import {GlobalModule} from './view/global/global.module';
 
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule,
@@ -24,7 +28,7 @@ import {GlobalModule} from './view/global/global.module';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    GlobalModule
+    GlobalModule, BsDropdownModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
