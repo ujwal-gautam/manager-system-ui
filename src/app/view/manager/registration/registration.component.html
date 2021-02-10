@@ -53,7 +53,7 @@
 
             <div class="form-group">
               <label>Mobile Number<span style=" color: #ff0000"> *</span></label>
-              <input type="text" formControlName="mobile" class="form-control" onKeyPress="if(this.value.length===10) return false;"
+              <input type="number" formControlName="mobile" class="form-control" onKeyPress="if(this.value.length===10) return false;"
                      min="1" minlength="10" pattern="^[0][1-9]\d{9}$|^[1-9]\d{9}$|^[1-9]\d{11}" placeholder="Please Enter 10 Digit Mobile No." inputmode="numeric"
                      digitonly [ngClass]="{'is-invalid': registrationForm.get('mobile').touched && registrationForm.get('mobile').invalid}">
               <div class="invalid-feedback">

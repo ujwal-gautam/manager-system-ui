@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {EmployeeService} from "../employee.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {EmployeeService} from '../employee.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SuccessModalComponent} from '../../global/success-modal/success-modal.component';
 import {ErrorModalComponent} from '../../global/error-modal/error-modal.component';
@@ -18,9 +18,7 @@ export class EmployeeAddEditComponent implements OnInit {
   mode: any;
   employee: any;
   employeeId: any;
-  isSubmitted: boolean = false;
-  isSuccess: boolean = false;
-  _statusMsg: string;
+  isSubmitted = false;
 
   constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService,
               private actRoute: ActivatedRoute,
@@ -33,7 +31,7 @@ export class EmployeeAddEditComponent implements OnInit {
       address: ['', Validators.required],
       emailId: ['', Validators.required],
       status: ['Active']
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -41,7 +39,7 @@ export class EmployeeAddEditComponent implements OnInit {
     this.employeeId = this.actRoute.snapshot.paramMap.get('id');
 
     if (this.employeeId) {
-      this.mode = "edit";
+      this.mode = 'edit';
       this.employeeService.getEmployeeById(this.employeeId).subscribe(data => {
         this.employee = data;
         this.employeeForm = this.formBuilder.group({
@@ -52,22 +50,22 @@ export class EmployeeAddEditComponent implements OnInit {
           address: ['', Validators.required],
           emailId: ['', Validators.required],
           status: ['Active']
-        })
+        });
 
         this.employeeForm.patchValue(this.employee);
-      })
+      });
     }
   }
 
   submitEmployeeForm() {
 
-    for (let controller in this.employeeForm.controls) {
+    for (const controller in this.employeeForm.controls) {
       this.employeeForm.get(controller).markAsTouched();
     }
     if (this.employeeForm.invalid) {
       return;
     }
-    if (this.mode == "edit") {
+    if (this.mode == 'edit') {
       this.updateEmployee();
     } else {
       this.addEmployee();
@@ -85,34 +83,26 @@ export class EmployeeAddEditComponent implements OnInit {
           this.errorModal.showModal('ERROR', res.error, '');
         }
       }
-    })
+    });
   }
 
   private addEmployee() {
     this.employeeService.addEmployee(this.employeeForm.value).subscribe((res: any) => {
       this.isSubmitted = true;
       if (res) {
-        this.isSuccess = res.success;
+        this.isSubmitted = res.success;
         if (res.success) {
-          this._statusMsg = res.message;
-          this.employee = {};
-          this.mode = "add";
-          this.employeeForm.reset();
-          setTimeout(() => {
-            this.isSubmitted = false;
-            this.isSuccess = false
-          }, 4000)
-
+          this.successModal.showModal('SUCCESS', res.message, '');
         } else {
-          this._statusMsg = res.error;
+          this.errorModal.showModal('ERROR', res.error, '');
         }
       }
     }, err => {
       console.log(err);
-    })
+    });
   }
 
-  modalSuccess($event: any) {
+  modalSuccess() {
     this.router.navigate(['/employee']);
   }
 }

@@ -1,8 +1,9 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {LoginComponent} from "./view/login/login.component";
-import {RegistrationComponent} from "./view/registration/registration.component";
+import {LoginComponent} from "./view/manager/login/login.component";
+import {RegistrationComponent} from "./view/manager/registration/registration.component";
 import {RouteGuardService} from "./view/service/route-guard.service";
+import {ForgetPasswordComponent} from "./view/manager/forget-password/forget-password.component";
 
 
 export const routes: Routes = [
@@ -30,6 +31,13 @@ export const routes: Routes = [
     path: 'employee',
     canActivate: [RouteGuardService],
     loadChildren: () => import('./view/employee/employee.module').then(m => m.EmployeeModule)
+  },
+  {
+    path: 'forget-password',
+    component: ForgetPasswordComponent,
+    data: {
+      title: 'Forget Password Page'
+    }
   }
 ];
 

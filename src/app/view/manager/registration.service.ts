@@ -38,6 +38,14 @@ export class RegistrationService {
       .pipe(
         retry(1),
         catchError(this.errorHandle)
-      )
+      );
+  }
+
+  updatePassword(emailId: any, data: any): Observable<any>{
+    return this.http.put<any>(this.baseUrl + '/forget-password/' + emailId, JSON.stringify(data), this.httpOptions )
+        .pipe(
+            retry(1),
+            catchError(this.errorHandle)
+        );
   }
 }

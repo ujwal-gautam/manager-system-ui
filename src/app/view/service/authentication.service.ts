@@ -57,7 +57,7 @@ export class AuthenticationService {
   }
 
   logout() {
-    sessionStorage.removeItem('authenticaterUser');
+    sessionStorage.removeItem('currentUser');
   }
 
 }

@@ -1,9 +1,9 @@
 import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthenticationService} from '../service/authentication.service';
+import {AuthenticationService} from '../../service/authentication.service';
 import {first} from 'rxjs/operators';
-import {ErrorModalComponent} from '../global/error-modal/error-modal.component';
+import {ErrorModalComponent} from '../../global/error-modal/error-modal.component';
 
 @Component({
   selector: 'app-dashboard',

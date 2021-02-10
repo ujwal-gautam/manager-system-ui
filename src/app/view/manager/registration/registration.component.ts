@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {RegistrationService} from './registration.service';
-import {SuccessModalComponent} from '../global/success-modal/success-modal.component';
-import {ErrorModalComponent} from '../global/error-modal/error-modal.component';
+import {RegistrationService} from '../registration.service';
+import {SuccessModalComponent} from '../../global/success-modal/success-modal.component';
+import {ErrorModalComponent} from '../../global/error-modal/error-modal.component';
 import {Router} from '@angular/router';
 
 @Component({

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {EmployeeService} from "./employee.service";
-import {Router} from "@angular/router";
+import {EmployeeService} from './employee.service';
+import {Router} from '@angular/router';
+import {AuthenticationService} from "../service/authentication.service";
 
 @Component({
   selector: 'app-employee',
@@ -11,8 +12,9 @@ export class EmployeeComponent implements OnInit {
 
   employeeList: any = [];
 
-  constructor(private employeeService: EmployeeService
-    , private router: Router) {
+  constructor(private employeeService: EmployeeService,
+              private router: Router,
+              private authenticationService : AuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -22,7 +24,7 @@ export class EmployeeComponent implements OnInit {
   loadAllEmployeeList() {
     return this.employeeService.getAllEmployees().subscribe((data: {}) => {
       this.employeeList = data;
-      console.log('this is emp list-> ', this.employeeList)
+      console.log('this is emp list-> ', this.employeeList);
     });
   }
 
@@ -34,5 +36,10 @@ export class EmployeeComponent implements OnInit {
     return this.employeeService.deleteEmployee(employee).subscribe((data: {}) => {
       this.ngOnInit();
     });
+  }
+
+  logoutManager(){
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
 }
